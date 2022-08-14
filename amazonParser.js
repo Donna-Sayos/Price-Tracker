@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const nightmare = require("nightmare")();
 // you have to require nightmare. Nighmare returns a function;
 // remove all the extra information after the path in the url you're telling nightmare to go to;
@@ -62,7 +64,7 @@ let htmlTemplate = `
 
 async function sendEmail() {
   const user = "donnasayos@gmail.com";
-  const pass = "wbveycvcertlhnaa"; // not my actual password. It won't let you login to my gmail even if you tried lol;
+  const pass = process.env.SECRET_PASS;
 
   let transporter = nodemailer.createTransport({
     host: "smtp.gmail.com", // smtp is the main transport in nodemailer; Simple Mail Transport Protocol -- is used for sending out emails;
@@ -86,7 +88,7 @@ async function sendEmail() {
 
 async function errorEmail() {
   const user = "donnasayos@gmail.com";
-  const pass = "wbveycvcertlhnaa";
+  const pass = process.env.SECRET_PASS;
 
   let transporter = nodemailer.createTransport({
     host: "smtp.gmail.com",
