@@ -18,7 +18,6 @@ cron.schedule("* * * * *", async function checkPrice() {
     const page = await browser.newPage();
     await page.goto(url);
     await page.waitForTimeout(10000);
-    // await page.screenshot({ path: "coinbase_snapshot.png" });
 
     const price = await page.evaluate(() => {
       const coinPrice = document.querySelector(
@@ -87,7 +86,7 @@ async function sendEmail() {
   });
 
   await transporter.sendMail({
-    from: `"Your Amazon Price Tracker" <${user}>`,
+    from: `"Your Cryptocurrency Price Tracker" <${user}>`,
     to: "sugarzaddy1234@gmail.com",
     subject: `${obj.subject}`,
     html: htmlTemplate,
